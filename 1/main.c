@@ -16,10 +16,18 @@ int main(void)
 	{
 	    if(n%2==0)
 	    {
-	        n = n/2;
+	        n >>=1;
 	    }
+	    else if ( n==3 )
+		n--;
+	    else 
+	    /*if( n&2 )
+		n = n+1 ;
 	    else
-		n = n-1 ;
+		n = n-1 ;*/
+	    
+	    	n += ( n%4 - 2 );
+	    
 	    count ++;
 	}
 	printf("Input:%d count:%d\n", n, count);

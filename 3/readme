@@ -1,8 +1,13 @@
 to compile:
 	make
 to run:
-	./main
+	./main or
+	./high
 points:
     1:if you don't use srand() to set seed, the seed is 1 to be default everytime, so you will
 	find that whenever you run your appl,the resault is the same,
 	so sand(time(NULL)) will set a different seed for each time before you call rand();
+
+main.c is force way暴力方法
+
+hith.c is a good way with fast speed

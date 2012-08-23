@@ -3,6 +3,10 @@ to compile:
 to run:
 	./main or
 	./high
+在high中输出的数字即代表url，而不是索引位置
+hash算法使用的是全映射，即，hash表能够涵盖所有取值空间，没有碰撞问题，当然了，比较浪费空间
+在检测真正的url时是不能用这样的方法的！
+
 points:
     1:if you don't use srand() to set seed, the seed is 1 to be default everytime, so you will
 	find that whenever you run your appl,the resault is the same,

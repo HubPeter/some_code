@@ -10,7 +10,7 @@
 
 typedef int hash;
 
-void gethash(_Bool*, int[]);
+void gethash(int*, int[]);
 int getrand(void);
 int gethashone(int);
 int main(void)
@@ -19,8 +19,8 @@ int main(void)
     int *B;
     B = (int *)malloc( SIZE*sizeof(int) );
     int A[SIZEA];
-    _Bool *hasht;
-    hasht = (_Bool *)malloc( MASK*sizeof(_Bool) );
+    int *hasht;
+    hasht = (int *)malloc( MASK*sizeof(int) );
     int i = 0;
     srand(time(NULL));
     for(; i<SIZE; i++)
@@ -42,9 +42,16 @@ int main(void)
     i = 0;
     for(; i<SIZE; i++)
     {
-	if( hasht[gethashone(B[i])]==1 )
-	    printf("%d	", B[i] );
+	if( hasht[ gethashone( B[i] ) ] == 1 )
+	    hasht[ gethashone( B[i] ) ] ++;
     }
+    i = 0;
+    for(; i<MASK; i++)
+    {
+	if(hasht[i]>1)
+	    printf("%d ", i);
+    }
+    printf("\n");
     free( B );
     free( hasht );
     return 0;
@@ -53,7 +60,7 @@ int getrand(void)
 {
     return rand()%MASK;
 }
-void gethash(_Bool *hasht, int *A)
+void gethash(int *hasht, int *A)
 {
     
     int i = 0;

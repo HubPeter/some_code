@@ -2,7 +2,7 @@
 
 
 #define SIZE 10
-int * insert( int [], const int );
+void insert( int [], const int );
 void show( int * );
 int main(void)
 {
@@ -15,26 +15,38 @@ int main(void)
     show( arr );
     return 0;
 }
-int * insert( int p[], const int n)
-{
-    int i = -1;//<0
-    int j = 0;//>=0
-    int temp;
-    for(; j<n; j++)
+void insert(int*A ,int size)//copy from the answer from url in readme
+{ 
+    int minus=-1,plus=-1;
+    int tmp=0;
+    int i = 0;
+    for(;i<size;i++)//travelsal the int array
     {
-	if( p[j]<0 )
-	{
-	    temp = p[j];
-	    int k = j;
-	    for(; k-1>i; k--)
-	    {
-		p[k] = p[k-1];
-	    }
-	    p[++i] = temp;
-	}
+        if(minus==-1)
+        {
+            if(A[i]<0&& plus>=0)
+            {
+                minus=i;
+            }
+            if(A[i]>0&& plus<0)
+            {
+                plus=i;
+            }
+        }
+
+        if(minus>=0&& plus>=0)
+        {
+            tmp=A[plus];
+            A[plus++] = A[minus];
+	    int k = minus;
+            for (; k> plus; k--) 
+            {
+                 A[k] = A[k -1];
+            }
+            A[plus]=tmp;
+            minus=-1;
+        }
     }
-    
-    return p;
 }
 void show( int * arr )
 {
